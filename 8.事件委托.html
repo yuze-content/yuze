@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>事件委托(事件代理)</title>
+	</head>
+	<body>
+		<ul id="list">
+		    <li id="li1">我是li1</li>
+		    <li id="li2">我是li2</li>
+		    <li id="li3">我是li3</li>
+		</ul>
+	</body>
+	<script type="text/javascript">
+	
+		//不使用事件代理，需要相同事件实现不同功能的情况
+		// var li1 = document.getElementById("li1");
+		// var li2 = document.getElementById("li2");
+		// var li3 = document.getElementById("li3");
+
+		// li1.onclick = function(event){
+		// 	console.log(111);
+		// }
+
+		// li2.onclick = function(event){
+		// 	console.log(222);
+		// }
+
+		// li3.onclick = function(event){
+		// 	console.log(333);
+		// }
+
+
+
+		//使用事件代理
+		var list = document.getElementById("list");
+
+		list.onclick = function(event){
+			var ev = event || window.event;
+			var target = ev.target || ev.srcElement;
+
+			switch(target.id){
+				case "li1":
+					console.log(111);
+					break;
+
+				case "li2":
+					console.log(222);
+					break;
+
+				case "li3":
+					console.log(333);
+					break;
+			}
+		}
+
+	</script>
+</html>
